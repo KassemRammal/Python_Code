@@ -20,3 +20,23 @@ def get_index_choice():
         print("Invalid choice. Please select 1, 2, 3, or 4.")
         return get_index_choice()
     return selected
+
+def get_input_path():
+    input_path = input("Enter the path to a .mol file, a folder of .mol files, or a .sdf file: ").strip()
+    
+    if not os.path.exists(input_path):
+        print("The specified path does not exist.")
+        sys.exit(1)
+    
+    return input_path
+
+def detect_input_type(input_path):
+    if os.path.isdir(input_path):
+        return 'mol_folder'
+    elif input_path.endswith('.mol'):
+        return 'mol_file'
+    elif input_path.endswith('.sdf'):
+        return 'sdf_file'
+    else:
+        print("Unsupported file type. Please provide a .mol file, folder, or .sdf file.")
+        sys.exit(1)

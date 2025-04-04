@@ -1,1 +1,22 @@
-print("Hello, GitHub!")
+# To make user friendly, the user must specify which topological index(s) need to be calculated.
+def get_index_choice():
+    print("Which topological index would you like to calculate?")
+    print("1 - Edge Density")
+    print("2 - Wiener Index")
+    print("3 - Petitjean Index")
+    print("4 - All of the above")
+
+    choice = input("Enter your choice (1-4): ").strip()
+
+    options = {
+        '1': 'edge',
+        '2': 'wiener',
+        '3': 'petitjean',
+        '4': 'all'
+    }
+
+    selected = options.get(choice)
+    if not selected:
+        print("Invalid choice. Please select 1, 2, 3, or 4.")
+        return get_index_choice()
+    return selected
